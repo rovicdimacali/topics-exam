@@ -40,7 +40,17 @@ export default {
           });
         });
 
-        this.topics = response.topics;
+        const stored = JSON.parse(localStorage.getItem("topics"));
+        if (!stored) {
+          localStorage.setItem("topics", JSON.stringify(response.topics));
+        }
+        this.topics = stored
+          ? stored
+          : response.topics?.length
+          ? response.topics
+          : [];
+
+        console.log(this.topics);
       } catch (error) {
         console.error(error);
       }

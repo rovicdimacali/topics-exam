@@ -21,6 +21,7 @@
             outlined
             severity="secondary"
             label="Cancel"
+            @click="isUpdateVisible = false"
           />
           <Button
             icon="pi pi-send"
@@ -40,7 +41,7 @@
 
 <script>
 export default {
-  props: ["key", "comment"],
+  props: ["comment", "topicIndex", "commentIndex"],
   data() {
     return {
       selectedComment: null,
@@ -84,10 +85,18 @@ export default {
     update() {
       this.comment.comment = this.selectedComment;
       this.isUpdateVisible = false;
+
+      const storedTopics = JSON.parse(localStorage.getItem("topics"));
+      if (storedTopics?.[this.topicIndex]?.comments?.[this.commentIndex]) {
+        storedTopics[this.topicIndex].comments[this.commentIndex].comment =
+          this.selectedComment;
+        localStorage.setItem("topics", JSON.stringify(storedTopics));
+      }
+
       this.$toast.add({
         severity: "success",
         summary: "Comment Updated",
-        detail: "The commnent has been updated successfully",
+        detail: "The comment has been updated successfully",
         life: 3000,
       });
     },
