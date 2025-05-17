@@ -1,0 +1,29 @@
+.comment-card {
+  padding: 10px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  gap: 10px;
+
+  .comment-header {
+    align-items: center;
+    justify-content: space-between;
+
+    .user-info {
+      align-items: center;
+      gap: 10px;
+
+      img {
+        width: 40px;
+        border-radius: 100px;
+      }
+    }
+
+    .menu-icon {
+      padding: 5px;
+      cursor: pointer;
+    }
+  }
+
+  .update-field {
+    align-items: end;
+  }
+}

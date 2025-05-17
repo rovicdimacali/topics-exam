@@ -1,0 +1,15 @@
+.topics-container {
+  max-width: 1200px;
+  margin: 50px auto;
+  gap: 20px;
+
+  h1 {
+    text-align: center;
+  }
+
+  .accordion-container {
+    .p-accordionheader {
+      text-transform: capitalize !important;
+    }
+  }
+}
